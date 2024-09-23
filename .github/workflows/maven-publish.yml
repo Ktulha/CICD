@@ -1,7 +1,10 @@
 
 name: Maven Package
 
-on: push
+on: 
+  push:
+    paths:
+      - "pom.xml"
 
 jobs:
   compile:
@@ -19,10 +22,15 @@ jobs:
           distribution: 'temurin'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-      - run: mvn compile
-      - run: mvn test
-      - run: mvn -B package --file pom.xml
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - name: Compile
+        run: mvn compile
+      - name: Test
+        run: mvn test
+      - name: Run app
+        run: mvn exec:java
+      - name: Package
+        run: mvn -B package --file pom.xml
+      # - name: Publish to GitHub Packages Apache Maven
+      #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
