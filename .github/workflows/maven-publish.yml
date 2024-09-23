@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Save artifact
-          path: build/art/maigolab_hello-1.0.0.jar
+          path: /home/runner/work/CICD/CICD/target/maigolab_hello-1.0.0.jar
       # - name: Publish to GitHub Packages Apache Maven
       #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       #   env:
