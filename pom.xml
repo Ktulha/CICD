@@ -9,7 +9,6 @@
   <name>maigolab_hello</name>
   <url>http://maven.apache.org</url>
   
-
   <build>
     <plugins>
       <plugin>
